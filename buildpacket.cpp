@@ -1,12 +1,12 @@
 #if (HAVE_CONFIG_H)
-#include "F:\libnet-1.1.2.1\libnet\include\config.h"
+#include "..\headfiles\config.h"
 #endif
-#include "F:\libnet-1.1.2.1\libnet\sample\libnet_test.h"
+#include "..\headfiles\libnet_test.h"
 #ifdef _WIN32_
-#include "F:\libnet-1.1.2.1\libnet\include\win32\getopt.h"
+#include "..\headfiles\getopt.h"
 #endif
 #include<string>
-#include "F:\libnet-1.1.2.1\libnet\win32\Debug\libnet.lib"
+#include "..\headfiles\libnet.lib"
 using namespace std;
 
 int build_packet(u_long src_ip, u_long dst_ip, u_short  src_prt, u_short dst_prt, char * payload,int type, int snumber, int acknumber){
@@ -42,23 +42,23 @@ int build_packet(u_long src_ip, u_long dst_ip, u_short  src_prt, u_short dst_prt
 		goto bad;
 	}
 
-	if (type == 1){//µÚÒ»´ÎÎÕÊÖ
+	if (type == 1){//ç¬¬ä¸€æ¬¡æ¡æ‰‹
 		t = libnet_build_tcp(
 			src_prt,
 			dst_prt,
 			snumber,
 			acknumber,
 			TH_SYN,
-			32767,//´°¿Ú´óĞ¡
-			0,//Ğ£ÑéºÍ
-			10,//½ô¼±Ö¸Õë
-			LIBNET_TCP_H + 20 + payload_s,//Êı¾İ°ü´óĞ¡
+			32767,//çª—å£å¤§å°
+			0,//æ ¡éªŒå’Œ
+			10,//ç´§æ€¥æŒ‡é’ˆ
+			LIBNET_TCP_H + 20 + payload_s,//æ•°æ®åŒ…å¤§å°
 			payload,
 			payload_s,
-			1,//libnet¾ä±ú
-			0);//Ğ­Òé±ê¼Ç
+			1,//libnetå¥æŸ„
+			0);//åè®®æ ‡è®°
 	}
-	else if (type == 2){//µÚ¶ş´ÎÎÕÊÖ
+	else if (type == 2){//ç¬¬äºŒæ¬¡æ¡æ‰‹
 		t = libnet_build_tcp(
 			src_prt,
 			dst_prt,
@@ -74,7 +74,7 @@ int build_packet(u_long src_ip, u_long dst_ip, u_short  src_prt, u_short dst_prt
 			1,
 			0);
 	}
-	else if (type == 3){//ÎŞ¸ºÔØµÄACK
+	else if (type == 3){//æ— è´Ÿè½½çš„ACK
 		t = libnet_build_tcp(
 			src_prt,
 			dst_prt,
@@ -90,7 +90,7 @@ int build_packet(u_long src_ip, u_long dst_ip, u_short  src_prt, u_short dst_prt
 			1,
 			0);
 	}
-	else if (type == 4){//ÓĞ¸ºÔØµÄÊı¾İ°ü
+	else if (type == 4){//æœ‰è´Ÿè½½çš„æ•°æ®åŒ…
 		t = libnet_build_tcp(
 			src_prt,
 			dst_prt,
@@ -106,7 +106,7 @@ int build_packet(u_long src_ip, u_long dst_ip, u_short  src_prt, u_short dst_prt
 			1,
 			0);
 	}
-	else if (type == 5){//ÓĞ¸ºÔØµÄACK
+	else if (type == 5){//æœ‰è´Ÿè½½çš„ACK
 		t = libnet_build_tcp(
 			src_prt,
 			dst_prt,
@@ -122,7 +122,7 @@ int build_packet(u_long src_ip, u_long dst_ip, u_short  src_prt, u_short dst_prt
 			1,
 			0);
 	}
-	else if (type == 6){//´øFIN Óë ACKµÄÊı¾İ°ü
+	else if (type == 6){//å¸¦FIN ä¸ ACKçš„æ•°æ®åŒ…
 		t = libnet_build_tcp(
 			src_prt,
 			dst_prt,
@@ -194,7 +194,7 @@ bad:
 }
 
 #if defined(_WIN32_)
-#include "F:\libnet-1.1.2.1\libnet\include\win32\getopt.h"
+#include "..\headfiles\getopt.h"
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #endif
