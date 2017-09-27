@@ -1,2 +1,2 @@
 # TFRC-high-efficiency-transmission-system
-TCP friendly
+TCP friendly rate contol
